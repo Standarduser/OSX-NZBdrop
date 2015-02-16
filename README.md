@@ -35,54 +35,8 @@ ist die Anzahl der Kategorien auf maximal 3 Stück beschränkt.
 
 **Notwendige Anpassungen**
 
-Im fünften Abschnitt (AppleScript ausführen) müssen folgende Änderungen durchgeführt werden:
-
-```
-on run {input, output}
-	
-	set nzbFilePath to input as string
-	
-	set nzbFile to my theSplit(nzbFilePath, ":")
-	
-	set dialogText to "Welche Kategorie soll verwendet werden?
-	" & nzbFile
-	
-	display dialog dialogText as string buttons {"Serie", "Film", "sonstige"}
-	
-	if button returned of result = "Serie" then
-		set output to "afp://192.168.243.5/NZBget/nzb/Serien"
-	else if button returned of result = "Film" then
-		set output to "afp://192.168.243.5/NZBget/nzb/Filme"
-	else if button returned of result = "sonstige" then
-		set output to "afp://192.168.243.5/NZBget/nzb"
-	end if
-	
-	return output
-end run
-
-
-
-on theSplit(theString, theDelimiter)
-	-- save delimiters to restore old settings
-	set oldDelimiters to AppleScript's text item delimiters
-	-- set delimiters to delimiter to be used
-	set AppleScript's text item delimiters to theDelimiter
-	-- create the array
-	set theArray to every text item of theString
-	-- restore the old setting
-	set AppleScript's text item delimiters to oldDelimiters
-	-- return the result
-	return last item of theArray
-end theSplit
-```
-
-- Zeile 10: Kategorienamen für die Kategorien 1, 2 und 3
-- Zeile 12: Name der Kategorie 1 (muss gleich dem auf Zeile 10 sein)
-- Zeile 13: Zielpfad für den Unterordner im Blackhole der Kategorie 1
-- Zeile 14: Name der Kategorie 2 (muss gleich dem auf Zeile 10 sein)
-- Zeile 15: Zielpfad für den Unterordner im Blackhole der Kategorie 2
-- Zeile 16: Name der Kategorie 3 (muss gleich dem auf Zeile 10 sein)
-- Zeile 17: Zielpfad für den Unterordner im Blackhole der Kategorie 3
+Im fünften Abschnitt (AppleScript ausführen) müssen zwischen den Zeilen 5 und 15 die Kategorien entsprechend dem Bedarf
+angepasst werden.
 
 **Bekannte Probleme**
 

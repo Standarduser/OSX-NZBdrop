@@ -540,7 +540,8 @@ end run</string>
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, output}		set nzbFilePath to input as string		set nzbFile to my theSplit(nzbFilePath, ":")		set dialogText to "Welche Kategorie soll verwendet werden?	" &amp; nzbFile		display dialog dialogText as string buttons {"Serie", "Film", "sonstige"}		if button returned of result = "Serie" then		set output to "afp://192.168.243.5/NZBget/nzb/Serien"	else if button returned of result = "Film" then		set output to "afp://192.168.243.5/NZBget/nzb/Filme"	else if button returned of result = "sonstige" then		set output to "afp://192.168.243.5/NZBget/nzb"	end if		return outputend runon theSplit(theString, theDelimiter)	-- save delimiters to restore old settings	set oldDelimiters to AppleScript's text item delimiters	-- set delimiters to delimiter to be used	set AppleScript's text item delimiters to theDelimiter	-- create the array	set theArray to every text item of theString	-- restore the old setting	set AppleScript's text item delimiters to oldDelimiters	-- return the result	return last item of theArrayend theSplit</string>
+					<string>on run {input, output}		---------------------------------------------------------------		-- Kategorie 1	set Kategorie1Name to "Serie"	set Kategorie1Pfad to "afp://192.168.243.5/NZBget/nzb/Serien"		-- Kategorie 2	set Kategorie2Name to "Film"	set Kategorie2Pfad to "afp://192.168.243.5/NZBget/nzb/Filme"		-- Kategorie 3	set Kategorie3Name to "sonstiges"	set Kategorie3Pfad to "afp://192.168.243.5/NZBget/nzb"		---------------------------------------------------------------		set nzbFilePath to input as string		set nzbFile to my theSplit(nzbFilePath, ":")		set dialogText to "Welche Kategorie soll verwendet werden?
+	" &amp; nzbFile		display dialog dialogText as string buttons {Kategorie1Name, Kategorie2Name, Kategorie3Name}		if button returned of result = Kategorie1Name then		set output to Kategorie1Pfad	else if button returned of result = Kategorie2Name then		set output to Kategorie2Pfad	else if button returned of result = Kategorie3Name then		set output to Kategorie3Pfad	end if		return outputend runon theSplit(theString, theDelimiter)	-- save delimiters to restore old settings	set oldDelimiters to AppleScript's text item delimiters	-- set delimiters to delimiter to be used	set AppleScript's text item delimiters to theDelimiter	-- create the array	set theArray to every text item of theString	-- restore the old setting	set AppleScript's text item delimiters to oldDelimiters	-- return the result	return last item of theArrayend theSplit</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -594,7 +595,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>514.000000:911.000000</string>
+				<string>514.000000:915.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -780,7 +781,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>514.000000:995.000000</string>
+				<string>514.000000:999.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -892,7 +893,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>514.000000:1037.000000</string>
+				<string>514.000000:1041.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1065,7 +1066,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>514.000000:1079.000000</string>
+				<string>514.000000:1083.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1189,7 +1190,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>514.000000:1121.000000</string>
+				<string>514.000000:1125.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Move Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1297,7 +1298,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>514.000000:1163.000000</string>
+				<string>514.000000:1167.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1367,82 +1368,82 @@ end run</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>6B8CA0EB-E395-43A9-9A7F-BFE558E48838</key>
-		<dict>
-			<key>from</key>
-			<string>264358CA-0A13-44FC-84E2-7002BA4A7706 - 264358CA-0A13-44FC-84E2-7002BA4A7706</string>
-			<key>to</key>
-			<string>7A5BF836-0D6F-4400-B157-4641C79F8300 - 7A5BF836-0D6F-4400-B157-4641C79F8300</string>
-		</dict>
-		<key>7B013FBF-FC9B-40DA-905C-5BD65DA58711</key>
-		<dict>
-			<key>from</key>
-			<string>6A7B5362-ED4E-4DEF-A28C-15873D0AE03B - 6A7B5362-ED4E-4DEF-A28C-15873D0AE03B</string>
-			<key>to</key>
-			<string>264358CA-0A13-44FC-84E2-7002BA4A7706 - 264358CA-0A13-44FC-84E2-7002BA4A7706</string>
-		</dict>
-		<key>83C10D53-17B6-490C-8628-CF6B3C6A4009</key>
+		<key>06510FAE-3B46-4B42-8098-13B3D939F4A4</key>
 		<dict>
 			<key>from</key>
 			<string>DD3701EA-0BB7-46A4-ACD8-EECB82C432DC - DD3701EA-0BB7-46A4-ACD8-EECB82C432DC</string>
 			<key>to</key>
 			<string>5EBADEBA-3DA5-4152-A5C7-B0B55699199A - 5EBADEBA-3DA5-4152-A5C7-B0B55699199A</string>
 		</dict>
-		<key>94518549-E63C-41D3-91D4-9A3495223F45</key>
+		<key>13316DEB-A6C3-4DAB-A256-512FCD7DA5AC</key>
 		<dict>
 			<key>from</key>
-			<string>4E6117B6-125A-410D-9338-D0B081C2E9FA - 4E6117B6-125A-410D-9338-D0B081C2E9FA</string>
+			<string>264358CA-0A13-44FC-84E2-7002BA4A7706 - 264358CA-0A13-44FC-84E2-7002BA4A7706</string>
 			<key>to</key>
-			<string>6A7B5362-ED4E-4DEF-A28C-15873D0AE03B - 6A7B5362-ED4E-4DEF-A28C-15873D0AE03B</string>
+			<string>7A5BF836-0D6F-4400-B157-4641C79F8300 - 7A5BF836-0D6F-4400-B157-4641C79F8300</string>
 		</dict>
-		<key>9D5DF62E-4C66-4789-8FC6-81BFE26EB10D</key>
+		<key>335D73C8-7DBC-46A0-AD9D-42F98B95670A</key>
 		<dict>
 			<key>from</key>
-			<string>97C03A56-070D-42BC-8FBA-A1FC8051DDCC - 97C03A56-070D-42BC-8FBA-A1FC8051DDCC</string>
-			<key>to</key>
 			<string>2CC1467A-EE6A-401A-B0CA-38A06D3A9E8A - 2CC1467A-EE6A-401A-B0CA-38A06D3A9E8A</string>
+			<key>to</key>
+			<string>829D4B21-3180-49C6-859C-8A59FC60660D - 829D4B21-3180-49C6-859C-8A59FC60660D</string>
 		</dict>
-		<key>A6206B2B-88F0-459A-914B-0D17066C5F09</key>
+		<key>3ECFAF3C-C2ED-4E31-99E1-E89D273F65F4</key>
 		<dict>
 			<key>from</key>
 			<string>7A5BF836-0D6F-4400-B157-4641C79F8300 - 7A5BF836-0D6F-4400-B157-4641C79F8300</string>
 			<key>to</key>
 			<string>A39EAE24-54C5-42FC-AF17-8E624B3C0458 - A39EAE24-54C5-42FC-AF17-8E624B3C0458</string>
 		</dict>
-		<key>A97748C9-D2F6-48C7-AF65-110E6AE63DFB</key>
+		<key>4FBFCB95-0A28-4B40-B6C9-59BC899E3CAE</key>
 		<dict>
 			<key>from</key>
-			<string>2CC1467A-EE6A-401A-B0CA-38A06D3A9E8A - 2CC1467A-EE6A-401A-B0CA-38A06D3A9E8A</string>
-			<key>to</key>
-			<string>829D4B21-3180-49C6-859C-8A59FC60660D - 829D4B21-3180-49C6-859C-8A59FC60660D</string>
-		</dict>
-		<key>B835100E-1492-431F-856C-BCC4F8BC2757</key>
-		<dict>
-			<key>from</key>
-			<string>CF1753BD-CBE5-43E0-B1C0-62C39E6502FD - CF1753BD-CBE5-43E0-B1C0-62C39E6502FD</string>
-			<key>to</key>
 			<string>4E6117B6-125A-410D-9338-D0B081C2E9FA - 4E6117B6-125A-410D-9338-D0B081C2E9FA</string>
+			<key>to</key>
+			<string>6A7B5362-ED4E-4DEF-A28C-15873D0AE03B - 6A7B5362-ED4E-4DEF-A28C-15873D0AE03B</string>
 		</dict>
-		<key>B86E28A2-9669-4940-8502-C42A655A3FF0</key>
+		<key>60B610A0-FE7B-4D0D-B652-D11ECE95A840</key>
 		<dict>
 			<key>from</key>
-			<string>829D4B21-3180-49C6-859C-8A59FC60660D - 829D4B21-3180-49C6-859C-8A59FC60660D</string>
+			<string>6A7B5362-ED4E-4DEF-A28C-15873D0AE03B - 6A7B5362-ED4E-4DEF-A28C-15873D0AE03B</string>
 			<key>to</key>
-			<string>DD3701EA-0BB7-46A4-ACD8-EECB82C432DC - DD3701EA-0BB7-46A4-ACD8-EECB82C432DC</string>
+			<string>264358CA-0A13-44FC-84E2-7002BA4A7706 - 264358CA-0A13-44FC-84E2-7002BA4A7706</string>
 		</dict>
-		<key>D1339C0E-AAFE-4D43-B5FE-3D25D65B31D7</key>
+		<key>669D866E-B8C7-4647-86C9-8FD2264B5770</key>
 		<dict>
 			<key>from</key>
 			<string>A39EAE24-54C5-42FC-AF17-8E624B3C0458 - A39EAE24-54C5-42FC-AF17-8E624B3C0458</string>
 			<key>to</key>
 			<string>2F0A9403-3BAD-4477-88BE-87609DE52F2F - 2F0A9403-3BAD-4477-88BE-87609DE52F2F</string>
 		</dict>
-		<key>E0EEFA31-2E64-4138-B7C4-4A5B0C86C5C2</key>
+		<key>74E67CD5-836F-435F-B9AD-7CA9F95D72CE</key>
 		<dict>
 			<key>from</key>
 			<string>2F0A9403-3BAD-4477-88BE-87609DE52F2F - 2F0A9403-3BAD-4477-88BE-87609DE52F2F</string>
 			<key>to</key>
 			<string>97C03A56-070D-42BC-8FBA-A1FC8051DDCC - 97C03A56-070D-42BC-8FBA-A1FC8051DDCC</string>
+		</dict>
+		<key>79B49851-8F72-4697-9E2F-7905DBE7AAEA</key>
+		<dict>
+			<key>from</key>
+			<string>97C03A56-070D-42BC-8FBA-A1FC8051DDCC - 97C03A56-070D-42BC-8FBA-A1FC8051DDCC</string>
+			<key>to</key>
+			<string>2CC1467A-EE6A-401A-B0CA-38A06D3A9E8A - 2CC1467A-EE6A-401A-B0CA-38A06D3A9E8A</string>
+		</dict>
+		<key>9D21A97C-F466-4B81-A571-B2B64490D0CC</key>
+		<dict>
+			<key>from</key>
+			<string>829D4B21-3180-49C6-859C-8A59FC60660D - 829D4B21-3180-49C6-859C-8A59FC60660D</string>
+			<key>to</key>
+			<string>DD3701EA-0BB7-46A4-ACD8-EECB82C432DC - DD3701EA-0BB7-46A4-ACD8-EECB82C432DC</string>
+		</dict>
+		<key>A13D52C4-1EE5-49D9-8146-3D6650CDCD5C</key>
+		<dict>
+			<key>from</key>
+			<string>CF1753BD-CBE5-43E0-B1C0-62C39E6502FD - CF1753BD-CBE5-43E0-B1C0-62C39E6502FD</string>
+			<key>to</key>
+			<string>4E6117B6-125A-410D-9338-D0B081C2E9FA - 4E6117B6-125A-410D-9338-D0B081C2E9FA</string>
 		</dict>
 	</dict>
 	<key>variables</key>
